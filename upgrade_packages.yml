@@ -4,24 +4,8 @@
   become: true
   tasks:
 
-  - name: update repository index for Ubuntu Servers
-    apt:
-      update_cache: yes
-    when: ansible_distribution == "Ubuntu"
-
-  - name: upgrade packages for Ubuntu Servers
-    apt:
+  - name: upgrade packages
+    package:
       name: "*"
       state: latest
-    when: ansible_distribution == "Ubuntu"
-
-  - name: update repository index for FreePBX Servers
-    yum:
       update_cache: yes
-    when: ansible_distribution == "Sangoma"
-
-  - name: upgrade packages for FreePBX Servers
-    yum:
-      name: "*"
-      state: latest
-    when: ansible_distribution == "Sangoma"
